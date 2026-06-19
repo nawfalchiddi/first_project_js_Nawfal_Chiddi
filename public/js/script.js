@@ -21,9 +21,10 @@ while (user == signUp || user == logIn || user == changePassword) {
         }
     }
     let email = prompt("type your Email")
-    if(email.includes(" ") ){
+    if(email.includes(" ")){
     alert("the email shauld not contain spaces between the littres")
     }
+    
     else {
         attempts--;
         if(attempts < 3){
