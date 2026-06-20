@@ -107,6 +107,7 @@ while(true){
 
 
 function login() {
+    const amoutMoney = 3000;
     const theEmail = prompt("enter your email");
     const thePassword = prompt("enter your password");
 
@@ -114,6 +115,8 @@ function login() {
     // const dsPasswordExiste = userDatabase.find(index => index.password === thePassword)
   if(dsEmailExiste){
     alert("you just loged in seccessfully")
+    alert(" your amout of money remaining is " +amoutMoney)
+    dashBord()
   }else{
     alert("the email does not existe try to sign up")
   }
@@ -127,7 +130,7 @@ function changePassword(){
     const dsEmailExiste = userDatabase.find(x => x.email === theEmail && x.password === ThePassword)
 
 
-    if(dsEmailExiste) {
+    if(dsEmailExiste){
         while(true){
                    const TheNewOne = prompt("enter new password")
               if (TheNewOne) {
@@ -135,16 +138,58 @@ function changePassword(){
                  alert("the password has been changed")      
                       break;
                     }
-                  }    
+                  }  
     }else{
         alert("password or email incorrect")
     }
 }
 
+function dashBord(){
+let activit = true
 
 
+while (activit) {
+    const secondAction =prompt( "welcome to the dashbord\n1. Show your amount of money\n2. deposite an amount\n3. draw a specific amount\n4 invest money\n5 take a leon\n6. log out")
+    switch (key) {
+        case "1":
+            showAmount()
+            break;
+    
+        case "2":
+            depositeMoney()
+            break;
+        case "3":
+            drawMoney()
+            break;
+
+            case "4":
+       moneyInvest()
+       break;
+            case "5":
+       leon()
+       break;
+        case "6":
+            main()
+              activit = false
+            break;
+            
+                 default:
+        alert("selet the one of the numbers you see");
+    }
+    
+}
+}
 
 
-
+function drawMoney() {
+    const amountOfMoney = 3000;
+   drawAmount = prompt("enter the needed amount")
+    if(drawAmount <= amountOfMoney && drawAmount > O){
+        amountOfMoney -= drawAmount
+        alert("the update is now :3" + amountOfMoney)
+    }else{
+        alert("invalide amount you need to put a number less than you current amount and more than 0")
+    }
+}
 
 main();
