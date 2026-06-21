@@ -198,6 +198,8 @@ function depositeMoney(){
      if ( WantedAmount > 0) {
         userDatabase[0].Money += WantedAmount
         alert("your new amount is "+userDatabase[0].Money)
+     }else{
+        alert("invalide number")
      }
 }
 
