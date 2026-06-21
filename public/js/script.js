@@ -120,14 +120,13 @@ function login() {
     // const dsPasswordExiste = userDatabase.find(index => index.password === thePassword)
   if(dsEmailExiste){
     alert("you just loged in seccessfully")
-    dashBord()
-  }else{
+}else{
     alert("the email does not existe try to sign up")
-  }
+}
 
-  if (userDatabase[0].leaonAt > 0) {
+if (userDatabase[0].leaonAt > 0) {
     let lossAfterEveryLogIn = userDatabase[0].leaonAt * 0.10
-
+    
     if (userDatabase[0].leaonAt >= lossAfterEveryLogIn) {
         userDatabase[0].Money -= lossAfterEveryLogIn  
         userDatabase[0].leaonAt -= lossAfterEveryLogIn
@@ -137,6 +136,7 @@ function login() {
         userDatabase[0].leaonAt = 0;
         alert("your final loan "+userDatabase[0].leaonAt+ " was token now")
         alert("your amount of money remaining is "+userDatabase[0].Money)
+        dashBord()
     }
   }
 }
