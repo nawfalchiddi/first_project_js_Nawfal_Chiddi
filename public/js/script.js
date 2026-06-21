@@ -100,7 +100,8 @@ while(true){
         password:password,
         Money :3000,
         investementTg:0, 
-        leonNTP:0
+        leonNTP:0,
+        investRecieve:0
     }
     userDatabase.push(theInfo);
    
@@ -122,6 +123,21 @@ function login() {
     dashBord()
   }else{
     alert("the email does not existe try to sign up")
+  }
+
+  if (userDatabase[0].leaonAt > 0) {
+    let lossAfterEveryLogIn = userDatabase[0].leaonAt * 0.10
+
+    if (userDatabase[0].leaonAt >= lossAfterEveryLogIn) {
+        userDatabase[0].Money -= lossAfterEveryLogIn  
+        userDatabase[0].leaonAt -= lossAfterEveryLogIn
+        alert("10% was taken thats mean "+lossAfterEveryLogIn+" was taken from your amount of money")
+    }else{
+        userDatabase[0].Money -= userDatabase[0].leaonAt
+        userDatabase[0].leaonAt = 0;
+        alert("your final loan "+userDatabase[0].leaonAt+ " was token now")
+        alert("your amount of money remaining is "+userDatabase[0].Money)
+    }
   }
 }
 
