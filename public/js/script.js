@@ -180,13 +180,16 @@ while (activit) {
     
 }
 }
-
-
+//show money :
+function showAmount() {
+    alert("your current amount is "+userDatabase[0].Money)
+}
+//Draw money:
 function drawMoney() {
     
    let drawAmount = Number(prompt("enter the needed amount"))
     if(drawAmount <= userDatabase[0].Money && drawAmount > 0){
-        userDatabase[0].Money -= drawAmount;
+        userDatabase[0].Money -= drawAmount
         alert("the update is now :" + userDatabase[0].Money)
     }else{
         alert("invalide amount you need to put a number less than you current amount and more than 0")
@@ -202,5 +205,6 @@ function depositeMoney(){
         alert("invalide number")
      }
 }
+//
 
 main();
