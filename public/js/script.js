@@ -119,7 +119,8 @@ function login() {
     const dsEmailExiste = userDatabase.find(index => index.email === theEmail && index.password === thePassword)
     // const dsPasswordExiste = userDatabase.find(index => index.password === thePassword)
   if(dsEmailExiste){
-    alert("you just loged in seccessfully")
+    alert("you just loged in seccessfully");
+    repayLeaon()
     dashBord()
   }else{
     alert("the email does not existe try to sign up")
@@ -128,19 +129,34 @@ function login() {
 }
 
 //the repay of the leon:
-if (userDatabase[0].leaonAt > 0) {
-  let lossAfterEveryLogIn = userDatabase[0].leaonAt * 0.10
-
-  if (userDatabase[0].leaonAt >= lossAfterEveryLogIn) {
-      userDatabase[0].Money -= lossAfterEveryLogIn  
-      userDatabase[0].leaonAt -= lossAfterEveryLogIn
-      alert("10% was taken thats mean "+lossAfterEveryLogIn+" was taken from your amount of money")
-  }else{
-      userDatabase[0].Money -= userDatabase[0].leaonAt
-      userDatabase[0].leaonAt = 0;
-      alert("your final loan "+userDatabase[0].leaonAt+ " was token now")
-      alert("your amount of money remaining is "+userDatabase[0].Money)
-  }
+function repayLeaon() {
+    
+    if (userDatabase[0].leaonAt > 0) {
+      let lossAfterEveryLogIn = userDatabase[0].leaonAt * 0.10
+    
+      if (userDatabase[0].leaonAt >= lossAfterEveryLogIn) {
+          userDatabase[0].Money -= lossAfterEveryLogIn  
+          userDatabase[0].leaonAt -= lossAfterEveryLogIn
+          alert("10% was taken thats mean "+lossAfterEveryLogIn+" was taken from your amount of money")
+      }else{
+          userDatabase[0].Money -= userDatabase[0].leaonAt
+          userDatabase[0].leaonAt = 0;
+          alert("your final loan "+userDatabase[0].leaonAt+ " was token now")
+          alert("your amount of money remaining is "+userDatabase[0].Money)
+      }
+    }
+}
+//investment recieves:
+function investGain(){
+    if (investRecieve < investementTg) {
+        let mainInvest = investementTg / 1.20;
+        let payAfterTheLOg = investementTg * 0.20
+       let theRestPay=  investementTg - investRecieve;
+       if () {
+        
+       }
+        
+    }
 }
 //change password:
 function changePassword(){
