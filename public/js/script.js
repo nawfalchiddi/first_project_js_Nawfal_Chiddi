@@ -98,7 +98,9 @@ while(true){
         email:email,
         age:age,
         password:password,
-        Money :3000
+        Money :3000,
+        investementTg:0, 
+        leonNTP:0
     }
     userDatabase.push(theInfo);
    
@@ -106,6 +108,7 @@ while(true){
     alert("registration was seccessfull");
 }
 
+// Login :
 
 function login() {
   
@@ -116,14 +119,13 @@ function login() {
     // const dsPasswordExiste = userDatabase.find(index => index.password === thePassword)
   if(dsEmailExiste){
     alert("you just loged in seccessfully")
-    alert(" your amout of money remaining is " +userDatabase[0].Money)
     dashBord()
   }else{
     alert("the email does not existe try to sign up")
   }
 }
 
-
+//change password:
 function changePassword(){
     const theEmail = prompt("enter email");
     const ThePassword = prompt("enter password");
@@ -144,13 +146,13 @@ function changePassword(){
         alert("password or email incorrect")
     }
 }
-
+//Dashbord:
 function dashBord(){
 let activit = true
 
 
 while (activit) {
-    const secondAction =prompt( "welcome to the dashbord\n1. Show your amount of money\n2. deposite an amount\n3. draw a specific amount\n4 invest money\n5 take a leon\n6. log out")
+    const secondAction =prompt( "welcome to the dashbord "+"\nyour cuurent amount of money: "+userDatabase[0].Money+"$"+"\n1. Show your amount of money\n2. deposite an amount\n3. draw a specific amount\n4 invest money\n5 take a leon\n6. log out")
     switch (secondAction) {
         case "1":
             showAmount()
@@ -182,7 +184,7 @@ while (activit) {
 }
 //show money :
 function showAmount() {
-    alert("your current amount is "+userDatabase[0].Money)
+    alert("your current amount is "+userDatabase[0].Money+"$")
 }
 //Draw money:
 function drawMoney() {
@@ -190,7 +192,7 @@ function drawMoney() {
    let drawAmount = Number(prompt("enter the needed amount"))
     if(drawAmount <= userDatabase[0].Money && drawAmount > 0){
         userDatabase[0].Money -= drawAmount
-        alert("the update is now :" + userDatabase[0].Money)
+        alert("the update is now :" + userDatabase[0].Money+"$")
     }else{
         alert("invalide amount you need to put a number less than you current amount and more than 0")
     }
@@ -200,11 +202,38 @@ function depositeMoney(){
     let WantedAmount = Number(prompt("enter how much you want to deposite"))
      if ( WantedAmount > 0) {
         userDatabase[0].Money += WantedAmount
-        alert("your new amount is "+userDatabase[0].Money)
+        alert("your new amount is "+userDatabase[0].Money+"$")
      }else{
         alert("invalide number")
      }
 }
-//
+//Money invest:
+function moneyInvest() {
+    let investAmount = Number(prompt("enter the wanted amount for the investement"))
+    if (investAmount > 0 && investAmount <= userDatabase[0].Money) {
+         userDatabase[0].Money -= investAmount
+         userDatabase[0].investementTg += (investAmount * 1.20) 
+alert(" investement was seccessfull you will recieve 20% "
+    +"your amount of money is "+userDatabase[0].Money+"$"
+    +" and your investment target is "+userDatabase[0].investementTg+"$")
+
+        
+    }else{
+        alert("invalide amount")
+    }
+}
+//leon:
+function leon() {
+    let maxAmount = userDatabase[0].Money * 0.20;
+    let leaonAt = Number(prompt("enter the desired amount between 1$ to "+maxAmount+"$"))
+    if (leaonAt <= maxAmount && leaonAt > 0) {
+       userDatabase[0].Money += leaonAt;
+       userDatabase[0].leonNTP += leaonAt;
+       alert("your leon-process was seccessfull "+leaonAt+" added to your bank account and your amount of money now is "+userDatabase[0].Money+"$")
+    }else{
+        alert("invalide choice")
+    }
+}
+
 
 main();
