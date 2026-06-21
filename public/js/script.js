@@ -97,7 +97,8 @@ while(true){
         name:name,
         email:email,
         age:age,
-        password:password
+        password:password,
+        Money :3000
     }
     userDatabase.push(theInfo);
    
@@ -107,7 +108,7 @@ while(true){
 
 
 function login() {
-    const amoutMoney = 3000;
+  
     const theEmail = prompt("enter your email");
     const thePassword = prompt("enter your password");
 
@@ -115,7 +116,7 @@ function login() {
     // const dsPasswordExiste = userDatabase.find(index => index.password === thePassword)
   if(dsEmailExiste){
     alert("you just loged in seccessfully")
-    alert(" your amout of money remaining is " +amoutMoney)
+    alert(" your amout of money remaining is " +userDatabase[0].Money)
     dashBord()
   }else{
     alert("the email does not existe try to sign up")
@@ -150,7 +151,7 @@ let activit = true
 
 while (activit) {
     const secondAction =prompt( "welcome to the dashbord\n1. Show your amount of money\n2. deposite an amount\n3. draw a specific amount\n4 invest money\n5 take a leon\n6. log out")
-    switch (key) {
+    switch (secondAction) {
         case "1":
             showAmount()
             break;
@@ -182,14 +183,22 @@ while (activit) {
 
 
 function drawMoney() {
-    const amountOfMoney = 3000;
-   drawAmount = prompt("enter the needed amount")
-    if(drawAmount <= amountOfMoney && drawAmount > O){
-        amountOfMoney -= drawAmount
-        alert("the update is now :3" + amountOfMoney)
+    
+   let drawAmount = Number(prompt("enter the needed amount"))
+    if(drawAmount <= userDatabase[0].Money && drawAmount > 0){
+        userDatabase[0].Money -= drawAmount;
+        alert("the update is now :" + userDatabase[0].Money)
     }else{
         alert("invalide amount you need to put a number less than you current amount and more than 0")
     }
+}
+//depositeMony:
+function depositeMoney(){
+    let WantedAmount = Number(prompt("enter how much you want to deposite"))
+     if ( WantedAmount > 0) {
+        userDatabase[0].Money += WantedAmount
+        alert("your new amount is "+userDatabase[0].Money)
+     }
 }
 
 main();
