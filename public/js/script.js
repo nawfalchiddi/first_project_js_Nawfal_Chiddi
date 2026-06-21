@@ -120,27 +120,28 @@ function login() {
     // const dsPasswordExiste = userDatabase.find(index => index.password === thePassword)
   if(dsEmailExiste){
     alert("you just loged in seccessfully")
-}else{
+    dashBord()
+  }else{
     alert("the email does not existe try to sign up")
+  }
+
 }
 
+//the repay of the leon:
 if (userDatabase[0].leaonAt > 0) {
-    let lossAfterEveryLogIn = userDatabase[0].leaonAt * 0.10
-    
-    if (userDatabase[0].leaonAt >= lossAfterEveryLogIn) {
-        userDatabase[0].Money -= lossAfterEveryLogIn  
-        userDatabase[0].leaonAt -= lossAfterEveryLogIn
-        alert("10% was taken thats mean "+lossAfterEveryLogIn+" was taken from your amount of money")
-    }else{
-        userDatabase[0].Money -= userDatabase[0].leaonAt
-        userDatabase[0].leaonAt = 0;
-        alert("your final loan "+userDatabase[0].leaonAt+ " was token now")
-        alert("your amount of money remaining is "+userDatabase[0].Money)
-        dashBord()
-    }
+  let lossAfterEveryLogIn = userDatabase[0].leaonAt * 0.10
+
+  if (userDatabase[0].leaonAt >= lossAfterEveryLogIn) {
+      userDatabase[0].Money -= lossAfterEveryLogIn  
+      userDatabase[0].leaonAt -= lossAfterEveryLogIn
+      alert("10% was taken thats mean "+lossAfterEveryLogIn+" was taken from your amount of money")
+  }else{
+      userDatabase[0].Money -= userDatabase[0].leaonAt
+      userDatabase[0].leaonAt = 0;
+      alert("your final loan "+userDatabase[0].leaonAt+ " was token now")
+      alert("your amount of money remaining is "+userDatabase[0].Money)
   }
 }
-
 //change password:
 function changePassword(){
     const theEmail = prompt("enter email");
