@@ -120,44 +120,61 @@ function login() {
     // const dsPasswordExiste = userDatabase.find(index => index.password === thePassword)
   if(dsEmailExiste){
     alert("you just loged in seccessfully");
-    repayLeaon()
-    dashBord()
+    // repayLeaon(dsEmailExiste)
+    // investGain(dsEmailExiste)
+    dashBord(dsEmailExiste)
   }else{
     alert("the email does not existe try to sign up")
   }
 
 }
 
+
+
 //the repay of the leon:
-function repayLeaon() {
+
+// function repayLeaon(){
     
-    if (userDatabase[0].leaonAt > 0) {
-      let lossAfterEveryLogIn = userDatabase[0].leaonAt * 0.10
+//     if (userDatabase[0].leonNTP > 0) {
+//       let lossAfterEveryLogIn = userDatabase[0].leonNTP * 0.10
     
-      if (userDatabase[0].leaonAt >= lossAfterEveryLogIn) {
-          userDatabase[0].Money -= lossAfterEveryLogIn  
-          userDatabase[0].leaonAt -= lossAfterEveryLogIn
-          alert("10% was taken thats mean "+lossAfterEveryLogIn+" was taken from your amount of money")
-      }else{
-          userDatabase[0].Money -= userDatabase[0].leaonAt
-          userDatabase[0].leaonAt = 0;
-          alert("your final loan "+userDatabase[0].leaonAt+ " was token now")
-          alert("your amount of money remaining is "+userDatabase[0].Money)
-      }
-    }
-}
+//       if (userDatabase[0].leonNTP>= lossAfterEveryLogIn) {
+//           userDatabase[0].Money -= lossAfterEveryLogIn  
+//           userDatabase[0].leonNTP -= lossAfterEveryLogIn
+//           alert("10% was taken thats mean "+lossAfterEveryLogIn+" was taken from your amount of money")
+//       }else{
+//           userDatabase[0].Money -=userDatabase[0].leonNTP
+//          userDatabase[0].leonNTP = 0;
+//           alert("your final loan "+userDatabase[0].leonNTP+ " was token now")
+//           alert("your amount of money remaining is "+userDatabase[0].Money)
+//       }
+//     }
+// }
+
+
+
 //investment recieves:
-function investGain(){
-    if (investRecieve < investementTg) {
-        let mainInvest = investementTg / 1.20;
-        let payAfterTheLOg = investementTg * 0.20
-       let theRestPay=  investementTg - investRecieve;
-       if () {
+
+// function investGain(){
+//     if (userDatabase[0].investRecieve < userDatabase[0].investementTg) {
+//         let mainInvest = userDatabase[0].investementTg / 1.20;
+//         let payAfterTheLOg = mainInvest * 0.20
+//        let theRestPay=  userDatabase[0].investementTg - userDatabase[0].investRecieve;
+//        if (theRestPay >= payAfterTheLOg) {
+//          userDatabase[0].Money += payAfterTheLOg;
+//         userDatabase[0].investRecieve += payAfterTheLOg
+//         alert("you jsut recieved 20% of "+payAfterTheLOg)
+//        }else{
+//          userDatabase[0].Money += theRestPay;
+//         userDatabase[0].investRecieve = userDatabase[0].investementTg
+//         alert("you just recieved your final investment : "+ theRestPay)
+//        }
         
-       }
-        
-    }
-}
+//     }
+// }
+
+
+
 //change password:
 function changePassword(){
     const theEmail = prompt("enter email");
@@ -205,7 +222,7 @@ while (activit) {
        leon()
        break;
         case "6":
-            main()
+          
               activit = false
             break;
             
